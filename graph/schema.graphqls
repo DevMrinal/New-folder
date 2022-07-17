@@ -1,0 +1,125 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type Todo {
+  id: ID!
+  text: String!
+  done: Boolean!
+  user: User!
+}
+
+type User {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  todos: [Todo!]!
+  addition(input:sum):additionResponse
+  substraction(input:sub):subResponse
+  multiplication(input:product):mulResponse
+  division(input:div):divResponse
+  calculator(input:calculation):calculateResponse
+ studentdata(input:dataFetch):[studentoutput]
+exceldata:exeloutput
+dbexcel(input:dbInput):Response
+  chartexcel(input:chartenter):chartResponse
+  piedata: pieResponse
+}
+
+type pieResponse{
+  status:String
+}
+
+input sum{
+  number1: Int 
+  number2: Int
+}
+type additionResponse{
+  number3:Int
+}
+input sub{
+  number1:Int 
+  number2:Int
+}
+type subResponse{
+  number3:Int
+}
+input product{
+  number1:Int
+  number2:Int
+}
+type mulResponse{
+  number3:Int
+}
+input div{
+  number1:Int 
+  number2:Int
+}
+type divResponse{
+  number3:Int
+}
+input calculation{
+  number1: Int 
+  number2: Int
+  opertor: String
+}
+type calculateResponse{
+  number3:Int
+}
+input dataFetch{
+  inst: String
+}
+type studentoutput{
+  id: String
+  firstname: String
+  lastname: String
+  dob: String
+  Phno: Int
+  BloodGroup: String
+  Address: String
+  Gender: String
+}
+type exeloutput{
+  Status:String 
+}
+input dbInput{
+  inp:String
+}
+type Response{
+  status:String
+}
+input chartenter{
+  cht:String
+}
+type chartResponse{
+  status:String
+}
+
+
+input NewTodo {
+  text: String!
+  userId: String!
+
+}
+
+type Mutation {
+  createTodo(input: NewTodo!): Todo!
+  upsertstudent(input:studententer):studentResponse
+}
+input studententer{
+  id: String
+  firstname: String!
+  lastname: String
+  DOB: String!
+  Phno: Int
+  BloodGroup: String!
+  Address: String!
+  Gender: String
+
+}
+type studentResponse{
+  id: String
+  Status: [String]!
+}
